@@ -48,6 +48,7 @@ int main(int argc, char *argv[])
     // Create a QTextEdit to act as a Python console
     QTextEdit *pythonConsole = new QTextEdit();
     pythonConsole->setPlaceholderText("Python Console");
+    pythonConsole->setReadOnly(true);
     layout.addWidget(pythonConsole);
 
     // Create a button to run Python code
@@ -59,6 +60,7 @@ int main(int argc, char *argv[])
                      {
         // Simple example of running a Python command
         std::string code = "print('Hello from Python!')";
+        pythonConsole->append(QString::fromStdString(code));
         py::exec(code); });
 
     // Set the central widget and show the main window
